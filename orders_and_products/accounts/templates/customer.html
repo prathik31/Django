@@ -1,0 +1,73 @@
+{%extends 'base.html'%}
+
+{%block msg%}
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <pre><h5>Customer:  {{customer.name}}</h5></pre>
+            <hr>
+            <a class="btn btn-outline-info btn-sm btn-block" href="/update_customer/{{customer.id}}">Update
+                Customer</a>
+            <a class="btn btn-outline-danger btn-sm btn-block" href="/delete_customer/{{customer.id}}">Delete
+                Customer</a>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Contact Information</h5>
+            <hr>
+            <pre>Email:   {{customer.email}}</pre>
+            <pre>Phone:   {{customer.phone}} </pre>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Total Orders</h5>
+            <hr>
+            <h1 style="text-align: center; padding: 10px">{{total_order}}</h1>
+        </div>
+    </div>
+</div>
+<br>
+
+<br>
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <form method="get">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Date Orderd</th>
+                    <th>Status</th>
+                    <a href=""><th>Update</th></a>
+                    <th>Remove</th>
+                </tr>
+
+                {%for i in order %}
+                    <tr>
+                        <td>{{i.PRODUCT.prod_name}}</td>
+                        <td>{{i.PRODUCT.prod_category}}</td>
+                        <td>{{i.date_create}}</td>
+                        <td>{{i.status}}</td>
+                        <td><a href="/update_order/{{customer.id}}">update</a></td>
+                        <td><a href="/delete_order/{{customer.id}}">remove</a></td>
+                    </tr>
+                {%endfor%}
+
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
