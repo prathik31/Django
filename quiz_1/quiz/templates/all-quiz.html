@@ -1,0 +1,49 @@
+{%extends 'base.html'%}
+
+{%block msg%}   
+
+<h1 class="display-4 text-center my-5">All Quizzes</h1>
+
+
+	<div class="container">
+		<a href="/view_quiz" class="btn btn-light me-2">All Quiz</a>
+		{%for i in cat%}
+			<a href="/search_quiz/{{i.name}}" class="btn btn-light me-2">{{i.name}}</a>
+		{%endfor%}
+	</div>
+
+	<form class="container d-flex my-4" role="search" method="get">
+		<input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+		<a href="#" type="submit" class="btn btn-primary ms-2">Search</a>
+	</form>
+
+	<div class="album py-5 bg-light">
+        <div class="container">
+			
+          <div class="row">
+			{%for i in QUIZ%}
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+					<div class="card-body">
+						<h4>{{i.title}}</h4>
+						<p class="card-text">Total Questions - {{i.questions_set.all|length}}</p>
+						<p class="card-text">{{i.description|truncatewords:5}}</p>
+						<div class="d-flex justify-content-between align-items-center">
+							<div class="btn-group">
+								<a href="/take_quiz/{{i.id}}"><button type="button" class="btn btn-sm btn-outline-success">Start Quiz</button></a>
+							</div>
+							<small class="text-body-secondary">{{i.created_at}}</small>
+						</div>
+					</div>
+				</div>
+              </div>       
+			  {%endfor%}
+              
+            
+          </div>
+        </div>
+      </div>
+
+
+
+{%endblock%}

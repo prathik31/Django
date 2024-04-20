@@ -1,0 +1,74 @@
+{%extends 'base.html'%}
+
+{%block msg%}  
+
+</div>
+{%csrf_token%}
+
+<h1 class="display-4 text-center my-5">@{{PROFILE.username}}'s Profile</h1>
+<div class="container text-center">
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <a href="/profile_edit/{{PROFILE.username}}" type="button" class="btn btn-outline-primary">Edit</a>
+        <a href="/delete_profile/{{PROFILE.username}}" type="button" class="btn btn-outline-danger">Delete</a>
+    </div>
+
+    <div class="container text-center my-4">
+        <div class="row ">
+            <div class="col">
+                <img src="{{PROFILE.profile_img.url}}" alt="user-profile" width="150" height="150">
+                <h2 class="fs-3">@{{PROFILE.username}}</h2>
+            </div>
+            <div class="col">
+                <h2>{{PROFILE.fullname}}</h2>
+                <p class="fs-5"><i class="bi bi-gender-ambiguous"></i> {{PROFILE.gender}}</p>
+                <p class="fs-5"><i class="bi bi-geo-alt-fill"></i> {{PROFILE.location}}</p>
+                <p class="fs-5"><i class="bi bi-file-person"></i> {{PROFILE.bio}}.</p>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="container">
+        <div class="row row-cols-sm-1 row-cols-md-1 row-cols-lg-2">
+            <div class="col-12">
+                <h3>Quiz attended by @aman</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Quiz</th>
+                            <th scope="col">Marks</th>
+                            <th scope="col">Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Newton's Law</td>
+                            <td>9/10</td>
+                            <td>2 weeks ago</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Newton's Law</td>
+                            <td>9/10</td>
+                            <td>2 weeks ago</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Newton's Law</td>
+                            <td>9/10</td>
+                            <td>3 weeks ago</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12">
+                <h3>@aman's performance</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {%endblock%}

@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+
+{%block msg%} 
+
+
+<h1 class="display-4 text-center my-5">{{quiz.title}} - ({{quiz.questions_set.all|length}})</h1>
+    <p class="fs-4 text-center container">{{quiz.description}}</p>
+
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <span class="fs-5">{{quiz.created_at}}</span>
+            <!-- <span class="fs-5">10:00</span> -->
+        </div>
+
+
+        <div class="questions my-4">
+            {%for question in quiz.questions_set.all%}
+            <div class="card mb-2">
+                <div class="card-header fw-bold">
+                    Question {{forloop.counter}}
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{question.text}}</p>
+                    
+                    {%for i in question.choices_set.all%}
+                    <div class="form-check">
+                        <label class="form-check-label" for="{{i.id}}">
+                            <input class="form-check-input" type="radio" name="{{question.id}}" id="{{i.id}}">
+                            {{i.text}}
+                        </label>
+                    </div>
+                    {%endfor%}
+                    </div>
+                    
+                </div>
+                {%endfor%}
+            </div>
+            
+        
+        <button type="submit" class="btn btn-primary">Submit the quiz</button>
+
+    </div>
+
+    
+
+{%endblock%}
+
+
+
+
